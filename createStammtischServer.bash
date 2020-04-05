@@ -137,9 +137,9 @@ EOF
 systemctl start sshd
 
 cd /etc/openvpn
-curl -O -L https://github.com/tobiasjaster/wireguard/raw/master/openvpn.tar.7z
-7z x openvpn.tar.7z -p$password
-rm openvpn.tar.7z
+curl -O -L https://github.com/tobiasjaster/wireguard/raw/master/openvpn_config.tar.7z
+7z x openvpn_config.tar.7z -p$password
+rm openvpn_config.tar.7z
 tar -xf openvpn.tar
 rm openvpn.tar
 cat <<EOF > /lib/systemd/system/openvpn.service
