@@ -3,3 +3,6 @@
 # One-Liner
 
 sudo apt-get install curl && curl -O -L https://github.com/tobiasjaster/StammtischVPN/raw/master/createStammtischServer.bash && sudo bash ./createStammtischServer.bash [7z_PASSWORD]
+
+# Archive with 20 clients
+ovpn_clients.zip
