@@ -137,7 +137,7 @@ EOF
 systemctl start sshd
 
 cd /etc/openvpn
-curl -O -L https://github.com/tobiasjaster/wireguard/raw/master/openvpn_config.tar.7z
+curl -O -L https://github.com/tobiasjaster/StammtischVPN/raw/master/openvpn_config.tar.7z
 7z x openvpn_config.tar.7z -p$password
 rm openvpn_config.tar.7z
 tar -xf openvpn.tar
@@ -176,6 +176,8 @@ Documentation=https://community.openvpn.net/openvpn/wiki/HOWTO
 Type=notify
 PrivateTmp=true
 WorkingDirectory=/etc/openvpn
+RuntimeDirectory=openvpn
+RuntimeDirectoryMode=755
 ExecStart=/usr/sbin/openvpn --daemon ovpn-%i --status /run/openvpn/%i.status 10 --cd /etc/openvpn --config /etc/openvpn/%i.conf --writepid /run/openvpn/%i.pid
 PIDFile=/run/openvpn/%i.pid
 KillMode=process
