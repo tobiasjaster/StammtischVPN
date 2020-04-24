@@ -6,10 +6,19 @@ if [ -z $1 ]; then
 else
     password=$1
 fi
- 	
-apt-get update
-apt-get upgrade
-apt-get install -y openssh-server openvpn
+
+if [ -x "$(command -v apk)" ]; then 
+    apk add --no-cache openvpn openssh
+elif [ -x "$(command -v apt-get)" ]; then 
+    apt-get update
+    apt-get upgrade -y
+    apt-get install -y openssh-server openvpn
+elif [ -x "$(command -v pacman)" ]; then 
+    yes | LC_ALL=en_US.UTF-8 pacman -Syu
+    yes | LC_ALL=en_US.UTF-8 pacman -S openssh openvpn
+else
+    echo "Please update Script with aditional package installer"
+fi
 
 mkdir -p ~/.ssh
 cat <<EOF > ~/.ssh/authorized_keys
